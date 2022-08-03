@@ -26,5 +26,16 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run make command
-        run: make hello
+      - name: python3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+        
+      - name: Install dependencies
+        run: make install
+        
+      - name: Lint with pylint
+        run: make lint
+      
+      - name: Test with pytest
+        run: make test
